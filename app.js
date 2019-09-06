@@ -73,6 +73,35 @@ app.post("/register", (req, res) => {
 
 })
 
+app.post("/login", (req, res)=>{
+
+    const _email = req.body.email;
+    const password = req.body.password;
+
+    User.findOne({email: _email}, (err, foundUser) =>{
+
+        if(err){
+
+            console.log(err)
+
+        }else{
+
+            bcrypt.compare(password, foundUser.password, function(err, result) {
+                
+                if(result){
+
+                    res.render("secrets");
+
+                }
+
+            });
+
+        }
+
+    })
+
+})
+
 app.listen(3000, function () {
   console.log("Server started on port 3000");
 });
