@@ -1,0 +1,26 @@
+{
+  "name": "whisper-demo",
+  "version": "1.0.0",
+  "description": "A Whisper Demo built with bcrypt encryption",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/haidousm/whisper-demo.git"
+  },
+  "author": "haidousm",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/haidousm/whisper-demo/issues"
+  },
+  "homepage": "https://github.com/haidousm/whisper-demo#readme",
+  "dependencies": {
+    "bcrypt": "^3.0.6",
+    "ejs": "^2.7.1",
+    "express": "^4.17.1",
+    "mongoose": "^5.6.13",
+    "nodemon": "^1.19.2"
+  }
+}
