@@ -17,6 +17,15 @@ mongoose.connect("mongodb://localhost:27017/WhisperDemoDB", {
   useNewUrlParser: true
 });
 
+const saltRounds = 10;
+
+const User = mongoose.model("User", {
+
+    email: String,
+    password: String
+
+})
+
 app.get("/", (req, res)=>{
 
     res.render("home")
@@ -32,6 +41,35 @@ app.get("/register", (req, res)=>{
 app.get("/login", (req, res)=>{
 
     res.render("login")
+
+})
+
+app.post("/register", (req, res) => {
+
+    const email = req.body.email;
+    const password = req.body.password;
+
+    bcrypt.hash(password, saltRounds, function(err, hash) {
+        
+        if(err){
+
+            console.log(err)
+
+        }else{
+
+            const newUser = new User({
+
+                email: email,
+                password: hash
+    
+            })
+
+            newUser.save();
+            res.render("secrets");
+        
+        }
+
+    });
 
 })
 
